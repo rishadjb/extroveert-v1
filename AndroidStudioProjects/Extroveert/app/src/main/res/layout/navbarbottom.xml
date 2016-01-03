@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minHeight="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:gravity="center_vertical"
+        android:background="#006281">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minHeight="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="36dip"
+        android:background="#006281">
+
+
+        <LinearLayout
+            android:id="@+id/button_home"
+            android:orientation="horizontal"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="30dip"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/home">
+            </ImageView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/button_search"
+            android:orientation="horizontal"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="30dip"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/search">
+            </ImageView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/button_activity"
+            android:orientation="horizontal"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="30dip"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/home">
+            </ImageView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/button_likes"
+            android:orientation="horizontal"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="30dip"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/like">
+            </ImageView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/button_profile"
+            android:orientation="horizontal"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="30dip"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/profile">
+            </ImageView>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>

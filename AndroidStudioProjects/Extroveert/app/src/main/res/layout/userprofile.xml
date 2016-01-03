@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <include layout="@layout/searchbar"/>
+    </LinearLayout>
+
+    <AutoCompleteTextView
+        android:hint="Rishad"
+        android:id="@+id/usersearch_field"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </AutoCompleteTextView>
+
+    <LinearLayout
+        android:id="@+id/userprofile_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/username"
+            android:orientation="horizontal"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="#3e3e3e">
+        </TextView>
+
+        <TextView
+            android:text="ADD"
+            android:id="@+id/addremove_button"
+            android:orientation="horizontal"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="#3e3e3e">
+        </TextView>
+
+        <TextView
+            android:text="BLOCK"
+            android:id="@+id/block_button"
+            android:orientation="horizontal"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="#3e3e3e">
+        </TextView>
+
+    </LinearLayout>
+</LinearLayout>

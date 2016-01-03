@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/layout_bg_rounded">
+
+        <LinearLayout
+            android:id="@+id/grid_topbar"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:text="event_name"
+                android:id="@+id/event_name"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:textSize="10sp"
+                android:textColor="#828282"
+                android:textStyle="bold"
+                android:fontFamily="medium"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/grid_location"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/grid_topbar"
+            android:layout_marginBottom="7dp">
+
+
+            <LinearLayout
+                android:id="@+id/grid_address"
+                android:layout_toLeftOf="@+id/event_heart"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:text="event_venue"
+                    android:id="@+id/event_venue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#828282"/>
+
+                <TextView
+                    android:text="event_datetime"
+                    android:id="@+id/event_datetime"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#828282"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/event_heart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="#000000"/>
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

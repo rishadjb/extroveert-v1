@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#58acfa">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:background="@mipmap/logo_text"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/logo"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <requestFocus></requestFocus>
+
+        <TextView
+            android:text="Login with facebook"
+            android:id="@+id/fblogin_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/startup_button" />
+
+        <TextView
+            android:text="Login with email"
+            android:id="@+id/emaillogin_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/startup_button" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Put extroveert catchphrase here"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-light" />
+
+</FrameLayout>
