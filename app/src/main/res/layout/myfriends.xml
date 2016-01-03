@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2e8">
+
+    <!-- ========================= TOP NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbartop"/>
+    </LinearLayout>
+    <!-- //========================= TOP NAVBAR ========================= -->
+
+    <!-- ========================= TABS ========================= -->
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_marginTop="5dip">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip">
+
+            <TextView
+                android:id="@+id/button_events"
+                android:text="FRIENDS"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#174b5e"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+    <!-- //========================= TABS ========================= -->
+
+
+    <!-- =========================  ========================= -->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+
+
+        <!-- ========================= EVENTS LAYOUT ========================= -->
+
+        <LinearLayout
+            android:id="@+id/layout_events"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dip">
+
+            <GridView
+                android:id="@+id/grid_friends"
+                android:numColumns="2"
+                android:gravity="center"
+                android:columnWidth="250dp"
+                android:stretchMode="columnWidth"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+        </LinearLayout>
+
+        <!-- //========================= EVENTS LAYOUT ========================= -->
+
+
+    </LinearLayout>
+
+    <!-- ========================= BOTTOM NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbarbottom"/>
+    </LinearLayout>
+    <!-- //========================= BOTTOM NAVBAR ========================= -->
+</LinearLayout>
