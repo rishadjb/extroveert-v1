@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/searchbar"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip">
+
+        <LinearLayout
+            android:id="@+id/navbar_top_A"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="30dip">
+
+            <LinearLayout
+                android:id="@+id/navbar_top_profilepiccontainer"
+                android:orientation="horizontal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.2">
+
+
+                <ImageView
+                    android:id="@+id/navbar_top_profilepic"
+                    android:onClick="onProfileButtonClick"
+                    android:orientation="horizontal"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@mipmap/profile_pic"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navbar_top_searchbar"
+                android:orientation="horizontal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="3dp"
+                android:background="@drawable/layout_bg_rounded">
+
+                <ImageView
+                    android:id="@+id/navbar_top_searchbaricon"
+                    android:orientation="horizontal"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.1"
+                    android:background="@mipmap/logo"/>
+
+                <EditText
+                    android:id="@+id/navbar_top_searchbartext"
+                    android:hint="SEARCH"
+                    android:singleLine="true"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.9"
+                    android:gravity="center"
+                    android:textSize="7sp"
+                    android:textColor="#3e3e3e"
+                    android:background="#efefef"/>
+
+                <Button
+                    android:id="@+id/navbar_top_searchbarbutton"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="15dip"
+                    android:layout_height="15dip"
+                    android:background="@drawable/searchbutton" />
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/navbar_top_lightning"
+                android:orientation="horizontal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.1"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:orientation="horizontal"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@mipmap/icon1"/>
+
+                <TextView
+                    android:text="4"
+                    android:layout_gravity="right"
+                    android:orientation="horizontal"
+                    android:layout_width="15dip"
+                    android:layout_height="15dip"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:background="@drawable/searchbutton"/>
+
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/navbar_top_advsearch"
+                android:orientation="horizontal"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@mipmap/icon2"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

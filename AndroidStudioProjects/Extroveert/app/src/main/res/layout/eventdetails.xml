@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbartop"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="7dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/layout_bg_rounded">
+
+        <LinearLayout
+            android:id="@+id/grid_topbar"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:text="event_name"
+                android:id="@+id/event_name"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="#828282"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="event_price"
+                android:id="@+id/event_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:gravity="right"
+                android:textColor="#608bcd"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/event_pic"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/grid_topbar">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/event_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_pic"
+            android:textColor="#828282">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/grid_location"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_description"
+            android:layout_marginBottom="7dp">
+
+
+            <LinearLayout
+                android:id="@+id/grid_address"
+                android:orientation="vertical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_below="@+id/event_description"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:text="event_venue"
+                    android:id="@+id/event_venue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#828282"/>
+
+                <TextView
+                    android:text="event_address"
+                    android:id="@+id/event_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#828282"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/grid_time"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="event_date"
+                    android:id="@+id/event_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    android:textColor="#828282"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:text="event_time"
+                    android:id="@+id/event_time"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    android:textColor="#828282"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <fragment
+            android:id="@+id/mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="7dp"
+            map:cameraZoom="13"
+            map:mapType="normal"
+            map:liteMode="false"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_below="@+id/grid_location" />
+
+        <LinearLayout
+            android:id="@+id/grid_invite"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/mapview">
+
+            <AutoCompleteTextView
+                android:hint="Invite a Friend"
+                android:singleLine="true"
+                android:id="@+id/usersearch_field"
+                android:layout_width="200dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"
+                android:padding="4dp"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
+                android:background="#e8e8e8">
+            </AutoCompleteTextView>
+
+            <LinearLayout
+                android:id="@+id/invitelist_layout"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="25dip">
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/grid_buttons"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/grid_invite">
+
+            <TextView
+                android:text="BUY"
+                android:id="@+id/button_imin"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.3"
+                android:layout_marginRight="4dp"
+                android:gravity="center"
+                android:textColor="#f4f4f4"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="12sp"
+                android:background="@drawable/layout_sharebutton"/>
+
+            <TextView
+                android:text="LIKE"
+                android:id="@+id/button_like"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.1"
+                android:layout_marginRight="4dp"
+                android:gravity="center"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="12sp"
+                android:textColor="#f4f4f4"
+                android:background="@drawable/layout_sharebutton"/>
+
+            <TextView
+                android:text="Send Invites"
+                android:id="@+id/button_invite"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.4"
+                android:layout_marginRight="4dp"
+                android:gravity="center"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="12sp"
+                android:textColor="#f4f4f4"
+                android:background="@drawable/layout_sharebutton"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbarbottom"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

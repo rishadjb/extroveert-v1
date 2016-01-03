@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2e8">
+
+    <!-- ========================= TOP NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbartop"/>
+    </LinearLayout>
+    <!-- //========================= TOP NAVBAR ========================= -->
+
+    <!-- ========================= TABS ========================= -->
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_marginTop="5dip">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/slide_bar"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#cc3e3e3e"
+                android:layout_weight="0.5"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip">
+
+            <TextView
+                android:id="@+id/button_events"
+                android:text="EVENTS"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#174b5e"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
+
+            <TextView
+                android:id="@+id/button_people"
+                android:text="PEOPLE"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#174b5e"
+                android:fontFamily="sans-serif-medium"/>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+    <!-- //========================= TABS ========================= -->
+
+
+    <!-- =========================  ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+
+
+        <!-- ========================= EVENTS LAYOUT ========================= -->
+        <LinearLayout
+            android:id="@+id/layout_events"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dip">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="ARTIST"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <EditText
+                        android:hint="Bon Jovi, NFL"
+                        android:id="@+id/artist_text"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:paddingLeft="7dp"
+                        android:layout_marginRight="15dip"
+                        android:gravity="center_vertical|left"
+                        android:textSize="12sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-light"
+                        android:singleLine="true"
+                        android:background="#fafafa"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="LOCATION"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <AutoCompleteTextView
+                        android:id="@+id/location_text"
+                        android:hint="Near Me"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:paddingLeft="7dp"
+                        android:layout_marginRight="15dip"
+                        android:gravity="center_vertical|left"
+                        android:textSize="12sp"
+                        android:textColor="#174b5e"
+                        android:singleLine="true"
+                        android:dropDownHeight="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:background="#fafafa"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="SEARCH RADIUS"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <EditText
+                        android:id="@+id/radius_text"
+                        android:hint="5 km"
+                        android:inputType="number"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:paddingLeft="7dp"
+                        android:layout_marginRight="15dip"
+                        android:gravity="center_vertical|left"
+                        android:textSize="12sp"
+                        android:textColor="#174b5e"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-light"
+                        android:background="#fafafa"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="DATE"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:layout_marginRight="15dip">
+                        <EditText
+                            android:id="@+id/startDate_text"
+                            android:hint="Start Date"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="left"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                        <TextView
+                            android:text="-"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.2"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif-light"/>
+                        <EditText
+                            android:id="@+id/endDate_text"
+                            android:hint="End Date"
+                            android:inputType="date"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="right"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="TIME"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:layout_marginRight="15dip">
+                        <EditText
+                            android:id="@+id/startTime_text"
+                            android:hint="Start Time"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="left"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                        <TextView
+                            android:text="-"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.2"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif-light"/>
+                        <EditText
+                            android:id="@+id/endTime_text"
+                            android:hint="End Time"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="right"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="PRICE"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:layout_marginRight="15dip">
+                        <EditText
+                            android:id="@+id/startPrice_text"
+                            android:inputType="number"
+                            android:hint="Low Price"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="left"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                        <TextView
+                            android:text="-"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.2"
+                            android:layout_marginRight="15dip"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif-light"/>
+
+                        <EditText
+                            android:id="@+id/endPrice_text"
+                            android:hint="High Price"
+                            android:inputType="number"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="right"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-light"
+                            android:background="#fafafa"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dip">
+                    <TextView
+                        android:text="EVENT TYPE"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.35"
+                        android:paddingRight="7dp"
+                        android:gravity="center_vertical|right"
+                        android:textSize="13sp"
+                        android:textColor="#174b5e"
+                        android:fontFamily="sans-serif-medium"/>
+                    <AutoCompleteTextView
+                        android:id="@+id/eventType_text"
+                        android:hint="Concert, Theater, Sports, Other"
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.7"
+                        android:paddingLeft="7dp"
+                        android:layout_marginRight="15dip"
+                        android:gravity="center_vertical|left"
+                        android:textSize="12sp"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-light"
+                        android:background="#fafafa"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <TextView
+                    android:text="SEARCH"
+                    android:id="@+id/search_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="5dip"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="#174b5e" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <!-- //========================= EVENTS LAYOUT ========================= -->
+
+        <!-- ========================= USERS LAYOUT ========================= -->
+        <LinearLayout
+            android:id="@+id/layout_users"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dip">
+
+            <AutoCompleteTextView
+                android:hint="Find Users"
+                android:id="@+id/usersearch_field"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp">
+            </AutoCompleteTextView>
+
+            <LinearLayout
+                android:id="@+id/userprofile_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:text="asdas"
+                    android:id="@+id/username"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textColor="#174b5e">
+                </TextView>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <TextView
+                        android:text="ADD"
+                        android:id="@+id/addremove_button"
+                        android:orientation="horizontal"
+                        android:layout_width="80dip"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textColor="#3e3e3e"
+                        android:textStyle="bold"
+                        android:background="#cccccc">
+                    </TextView>
+
+                    <TextView
+                        android:text="BLOCK"
+                        android:id="@+id/block_button"
+                        android:orientation="horizontal"
+                        android:layout_width="80dip"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textColor="#3e3e3e"
+                        android:textStyle="bold"
+                        android:background="#cccccc">
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- //========================= USERS LAYOUT ========================= -->
+
+    </LinearLayout>
+
+    <!-- ========================= BOTTOM NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbarbottom"/>
+    </LinearLayout>
+    <!-- //========================= BOTTOM NAVBAR ========================= -->
+</LinearLayout>
