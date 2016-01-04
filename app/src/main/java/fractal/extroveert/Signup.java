@@ -66,7 +66,7 @@ public class Signup extends Activity {
                                                          errorcheck.setText("");
 
                                                          getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit().putString("user", username.getText().toString()).apply();
-                                                         Intent i = new Intent(getApplicationContext(), Startup.class);
+                                                         Intent i = new Intent(getApplicationContext(), Startup_old.class);
                                                          startActivity(i);
                                                      }
                                                      //if signup is failure

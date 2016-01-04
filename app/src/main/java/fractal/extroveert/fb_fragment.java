@@ -1,6 +1,7 @@
 package fractal.extroveert;
 
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -65,7 +66,6 @@ public class fb_fragment extends Fragment {
                                     String email = me.optString("name");
                                     String id = me.optString("id");
                                     // send email and id to your web server
-
 
                                     //------------------------------------- call InteractDB get JSON object ---------------------------------
 

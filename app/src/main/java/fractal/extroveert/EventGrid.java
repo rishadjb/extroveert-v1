@@ -2,15 +2,10 @@ package fractal.extroveert;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +20,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -331,7 +325,7 @@ public class EventGrid extends FragmentActivity implements OnMapReadyCallback {
         String className = this.getClass().getSimpleName();
         (findViewById(R.id.button_search)).setOnClickListener(new MyClickListener(this, className, AdvSearch.class));
         (findViewById(R.id.button_profile)).setOnClickListener(new MyClickListener(this, className, MyProfile.class));
-        (findViewById(R.id.button_exit)).setOnClickListener(new MyClickListener(this, className, fblogin.class));
+        (findViewById(R.id.button_exit)).setOnClickListener(new MyClickListener(this, className, Startup.class));
         //===========================================================================================================
         //------------------------------------------ BOTTOM NAV BAR SETUP--------------------------------------------
         //===========================================================================================================
@@ -385,7 +379,7 @@ public class EventGrid extends FragmentActivity implements OnMapReadyCallback {
         //#-------------------------generate MAP for event-----------------------------------
 
 
-        //Toast.makeText(getApplicationContext(), sql_query, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), sql_query, Toast.LENGTH_LONG).show();
 
 
         //------------------------------------- onClick action for View as List button ---------------------------------
