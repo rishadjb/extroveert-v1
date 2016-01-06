@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:gravity="center_vertical"
-        android:background="#006281">
+        android:background="#333333"><!--android:background="#006281"-->
 
 
     <LinearLayout

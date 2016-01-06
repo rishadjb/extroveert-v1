@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -44,7 +45,8 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
 
     AutoCompleteTextView usersearch_field;
     TextView friendlist[] = new TextView[15];
-    LinearLayout invitelist_layout;
+    TextView see_invitees, close_invitees;
+    LinearLayout invitelist_layout, friendlist_popup;
     Integer invitee_counter=0;
 
     String userID, user_list;
@@ -77,7 +79,11 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
         TextView textView_buybutton = (TextView) findViewById(R.id.button_imin);
 
 
+        see_invitees = (TextView) findViewById(R.id.see_invitees);
+        close_invitees = (TextView) findViewById(R.id.friendlist_popup_close);
+
         invitelist_layout = (LinearLayout) findViewById(R.id.invitelist_layout);
+        //friendlist_popup = (LinearLayout) findViewById(R.id.friendlist_popup);
         //#-----------------------------------assign views---------------------------------------
 
         sku = getIntent().getStringExtra("sku");
@@ -145,11 +151,12 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
 
                     friendlist[invitee_counter].setText(usersearch_field.getText().toString());
                     friendlist[invitee_counter].setBackgroundResource(R.drawable.invitee);
-                    friendlist[invitee_counter].setPadding(5, 0, 5, 0);
-
+                    friendlist[invitee_counter].setPadding(5, 0, 5, 5);
+                    friendlist[invitee_counter].setGravity(Gravity.CENTER);
+                    friendlist[invitee_counter].setTextSize(12);    //set text size in SP
                     //set margins
-                    LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    llp.setMargins(5, 0, 5, 0);
+                    LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    llp.setMargins(5, 0, 5, 5);
                     friendlist[invitee_counter].setLayoutParams(llp);
 
                     invitelist_layout.addView(friendlist[invitee_counter]);
@@ -191,6 +198,28 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
         else textView_likebutton.setBackgroundResource(R.drawable.layout_sharebutton);
 
         //Toast.makeText(EventDetails.this, eventVenue, Toast.LENGTH_SHORT).show();
+
+
+        //-----------------------------------onclick event for see_invitees---------------------------------------
+        ((TextView) findViewById(R.id.see_invitees)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                  ((LinearLayout) findViewById(R.id.friendlist_popup)).setVisibility(View.VISIBLE);
+                }
+            }
+        );
+        //#-----------------------------------onclick event for see_invitees---------------------------------------
+
+        //-----------------------------------onclick event for see_invitees---------------------------------------
+        ((TextView) findViewById(R.id.friendlist_popup_close)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((LinearLayout) findViewById(R.id.friendlist_popup)).setVisibility(View.GONE);
+                }
+            }
+        );
+        //#-----------------------------------onclick event for see_invitees---------------------------------------
+
 
 
         //-----------------------------------onclick event for BUY button---------------------------------------

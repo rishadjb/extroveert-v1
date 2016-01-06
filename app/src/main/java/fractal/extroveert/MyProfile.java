@@ -205,12 +205,15 @@ public class MyProfile extends Activity {
         //------------------------------------------ BOTTOM NAV BAR SETUP--------------------------------------------
         //===========================================================================================================
         String className = this.getClass().getSimpleName();
+        (findViewById(R.id.button_home)).setOnClickListener(new MyClickListener(this, className, EventGrid.class));
         (findViewById(R.id.button_search)).setOnClickListener(new MyClickListener(this, className, AdvSearch.class));
         (findViewById(R.id.button_profile)).setOnClickListener(new MyClickListener(this, className, MyProfile.class));
-        (findViewById(R.id.button_exit)).setOnClickListener(new MyClickListener(this, className, Startup_old.class));
+        (findViewById(R.id.button_exit)).setOnClickListener(new MyClickListener(this, className, Startup.class));
         //===========================================================================================================
         //------------------------------------------ BOTTOM NAV BAR SETUP--------------------------------------------
         //===========================================================================================================
+
+
 
 
     }

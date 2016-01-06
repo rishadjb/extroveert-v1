@@ -1,6 +1,7 @@
 package fractal.extroveert;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +38,10 @@ public class Startup extends Activity {
     //private TextView info;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+
     TextView emaillogin_button;
+    TextView googlelogin_button;
+    TextView fblogin_button;
 
     private final List<String> permissions;
     public Startup() {
@@ -150,14 +154,24 @@ public class Startup extends Activity {
 
         // Buttons
         emaillogin_button = (TextView) findViewById(R.id.emaillogin_button);
+        googlelogin_button = (TextView) findViewById(R.id.googlelogin_button);
+        fblogin_button = (TextView) findViewById(R.id.fblogin_button);
 
 
-        // view products click event
         emaillogin_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit().putString("user", "rishad").apply();
                 clearStackAndStartActivity();
+            }
+        });
+
+        fblogin_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                loginButton.performClick();
             }
         });
 

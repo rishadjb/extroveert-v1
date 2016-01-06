@@ -323,6 +323,7 @@ public class EventGrid extends FragmentActivity implements OnMapReadyCallback {
         //------------------------------------------ BOTTOM NAV BAR SETUP--------------------------------------------
         //===========================================================================================================
         String className = this.getClass().getSimpleName();
+        (findViewById(R.id.button_home)).setOnClickListener(new MyClickListener(this, className, EventGrid.class));
         (findViewById(R.id.button_search)).setOnClickListener(new MyClickListener(this, className, AdvSearch.class));
         (findViewById(R.id.button_profile)).setOnClickListener(new MyClickListener(this, className, MyProfile.class));
         (findViewById(R.id.button_exit)).setOnClickListener(new MyClickListener(this, className, Startup.class));
@@ -379,7 +380,7 @@ public class EventGrid extends FragmentActivity implements OnMapReadyCallback {
         //#-------------------------generate MAP for event-----------------------------------
 
 
-        Toast.makeText(getApplicationContext(), sql_query, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), sql_query, Toast.LENGTH_LONG).show();
 
 
         //------------------------------------- onClick action for View as List button ---------------------------------
