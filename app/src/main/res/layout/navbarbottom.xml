@@ -17,7 +17,7 @@
         android:minHeight="40dp"
         android:layout_width="fill_parent"
         android:layout_height="36dip"
-        android:background="#006281">
+        android:background="#333333">
 
 
         <LinearLayout

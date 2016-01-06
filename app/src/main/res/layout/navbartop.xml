@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:gravity="center"
-        android:background="#006281">
+        android:background="#00589a">
 
         <ImageView
             android:layout_width="100dp"
