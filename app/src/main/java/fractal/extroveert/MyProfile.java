@@ -177,7 +177,7 @@ public class MyProfile extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofilenew);
+        setContentView(R.layout.myprofile);
 
         //get user ID from SharedPreferences
         userID = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).getString("user", "DEFAULT");

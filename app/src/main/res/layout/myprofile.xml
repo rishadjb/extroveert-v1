@@ -33,7 +33,7 @@
                 android:id="@+id/profile_pic_container"
                 android:orientation="vertical"
                 android:layout_width="80dp"
-                android:layout_height="100dip"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:gravity="center_horizontal">
 
@@ -89,45 +89,49 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignBottom="@id/profile_pic_container">
-
-                <TextView
-                    android:id="@+id/viewfriends"
-                    android:text="View Friends"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profile_pic_container"
-                    android:layout_gravity="center"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="10dip"
-                    android:textSize="14sp"
-                    android:textColor="#174b5e"/>
-
-                <TextView
-                    android:id="@+id/editprofile"
-                    android:text="Edit Profile"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profile_pic_container"
-                    android:layout_gravity="center"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="10dip"
-                    android:textSize="14sp"
-                    android:textColor="#174b5e"/>
-
-
-            </LinearLayout>
-
 
 
 
         </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignBottom="@id/navbar_topa"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip">
+
+            <TextView
+                android:id="@+id/viewfriends"
+                android:text="Views Friends"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_pic_container"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dip"
+                android:textSize="14sp"
+                android:textColor="#174b5e"/>
+
+            <TextView
+                android:id="@+id/editprofile"
+                android:text="Edit Profile"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_pic_container"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dip"
+                android:textSize="14sp"
+                android:textColor="#174b5e"/>
+
+
+        </LinearLayout>
+
 
         <GridView
             android:id="@+id/grid_likedevents"
