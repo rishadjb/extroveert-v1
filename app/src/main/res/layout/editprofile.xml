@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2e8">
+
+    <!-- ========================= TOP NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbartop"/>
+    </LinearLayout>
+    <!-- //========================= TOP NAVBAR ========================= -->
+
+    <!-- ========================= TABS ========================= -->
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_marginTop="5dip">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/slide_bar"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#cc3e3e3e"
+                android:layout_weight="0.5"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip">
+
+            <TextView
+                android:id="@+id/button_personal"
+                android:text="PERSONAL"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#174b5e"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
+
+            <TextView
+                android:id="@+id/button_searchpref"
+                android:text="DEFAULT SEARCH"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#174b5e"
+                android:fontFamily="sans-serif-medium"/>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+    <!-- //========================= TABS ========================= -->
+
+
+    <!-- =========================  ========================= -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <!-- ========================= PERSONAL LAYOUT ========================= -->
+            <LinearLayout
+                android:id="@+id/layout_personal"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/editpersonal"/>
+            </LinearLayout>
+            <!-- //========================= PERSONAL LAYOUT ========================= -->
+
+
+            <!-- ========================= DEFAULT SEARCH LAYOUT ========================= -->
+
+            <LinearLayout
+                android:id="@+id/layout_searchpref"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/editsearch"/>
+            </LinearLayout>
+
+            <!-- //========================= DEFAULT SEARCH LAYOUT ========================= -->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:text="UPDATE"
+                android:id="@+id/updateprofile_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="5dip"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif-medium"
+                android:background="#174b5e" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <!-- ========================= BOTTOM NAVBAR ========================= -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/navbarbottom"/>
+    </LinearLayout>
+    <!-- //========================= BOTTOM NAVBAR ========================= -->
+</LinearLayout>

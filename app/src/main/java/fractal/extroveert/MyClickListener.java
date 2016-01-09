@@ -9,6 +9,7 @@ Class for custom onclicklistener for bottom nav bar button
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -66,19 +67,19 @@ public class MyClickListener extends Activity implements View.OnClickListener {
 
             if ((target_class.getSimpleName()).equals("EventGrid")) {
                 //i.putExtra("cityName", getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).getString("cityName", ""));
-                i.putExtra("cityName", "New York, NY");
-                i.putExtra("searchRadius", "25");
 
+                SharedPreferences sharedpref = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+
+                i.putExtra("cityName", sharedpref.getString("default_location", ""));
+                i.putExtra("searchRadius", sharedpref.getString("default_searchRadius", ""));
                 i.putExtra("startDate", "");
                 i.putExtra("endDate", "");
-
-                i.putExtra("startTime", "");
-                i.putExtra("endTime", "");
-
-                i.putExtra("startPrice", "");
-                i.putExtra("endPrice", "");
-
-                i.putExtra("eventType", "");
+                i.putExtra("startTime", sharedpref.getString("default_startTime", ""));
+                i.putExtra("endTime", sharedpref.getString("default_endTime", ""));
+                i.putExtra("startPrice", sharedpref.getString("default_startPrice", ""));
+                i.putExtra("endPrice", sharedpref.getString("default_endPrice", ""));
+                i.putExtra("eventType", sharedpref.getString("default_eventType", ""));
             }
 
 

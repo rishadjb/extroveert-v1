@@ -177,7 +177,7 @@ public class MyProfile extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofile);
+        setContentView(R.layout.myprofilenew);
 
         //get user ID from SharedPreferences
         userID = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).getString("user", "DEFAULT");
@@ -190,6 +190,14 @@ public class MyProfile extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), MyFriends.class));
+            }
+        });
+
+        //Click on the Edit Profile button
+        (findViewById(R.id.editprofile)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), EditProfile.class));
             }
         });
 

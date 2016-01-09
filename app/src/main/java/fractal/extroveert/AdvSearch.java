@@ -168,6 +168,9 @@ public class AdvSearch extends Activity implements OnClickListener {
         layout_users = (LinearLayout) findViewById(R.id.layout_users);
         slide_bar = (LinearLayout) findViewById(R.id.slide_bar);
 
+        button_people = (TextView) findViewById(R.id.button_people);
+        button_events = (TextView) findViewById(R.id.button_events);
+
         RightSwipeIn = AnimationUtils.loadAnimation(this, R.anim.slide_right_in);
         RightSwipeOut = AnimationUtils.loadAnimation(this, R.anim.slide_right_out);
         LeftSwipeIn = AnimationUtils.loadAnimation(this, R.anim.slide_left_in);
@@ -176,12 +179,10 @@ public class AdvSearch extends Activity implements OnClickListener {
         slide_bar_left = AnimationUtils.loadAnimation(this, R.anim.slide_bar_left);
         slide_bar_right = AnimationUtils.loadAnimation(this, R.anim.slide_bar_right);
 
-        button_people = (TextView) findViewById(R.id.button_people);
-        button_events = (TextView) findViewById(R.id.button_events);
 
         layout_users.setVisibility(View.GONE);
 
-        //------------------------------------- onClick action for View Map button ---------------------------------
+        //------------------------------------- onClick action for People button ---------------------------------
         findViewById(R.id.button_people).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -200,10 +201,10 @@ public class AdvSearch extends Activity implements OnClickListener {
 
             }
         });
-        //#------------------------------------- onClick action for View Map button ---------------------------------
+        //#------------------------------------- onClick action for People button ---------------------------------
 
 
-        //------------------------------------- onClick action for View Map button ---------------------------------
+        //------------------------------------- onClick action for Events button ---------------------------------
         findViewById(R.id.button_events).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -222,7 +223,7 @@ public class AdvSearch extends Activity implements OnClickListener {
 
             }
         });
-        //#------------------------------------- onClick action for View Map button ---------------------------------
+        //#------------------------------------- onClick action for Events button ---------------------------------
 
 
         //===========================================================================================================
@@ -230,8 +231,7 @@ public class AdvSearch extends Activity implements OnClickListener {
         //===========================================================================================================
 
 
-        USERA = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).getString("user", "DEFAULT");
-
+        USERA = userID;
 
         try {
             USERA_enc = URLEncoder.encode(USERA, "UTF-8");
@@ -594,9 +594,6 @@ public class AdvSearch extends Activity implements OnClickListener {
 
 
         return user_list;
-    }
-
-    public void logout(){
     }
 
 
