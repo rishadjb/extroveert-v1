@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,6 +39,7 @@ public class CustomGrid extends BaseAdapter {
     private String userID;
 
     LinearLayout event_invite_prompt;
+    RelativeLayout event_layout;
 
     public CustomGrid(Activity act, Context c, final Bundle b, String userID,
                       String[] sku, String[] eventname, String[] buyurl,
@@ -103,13 +105,13 @@ public class CustomGrid extends BaseAdapter {
         if (convertView == null) {
 
             grid = new View(mContext);
-            grid = inflater.inflate(R.layout.grid_single, parent, false);
+            grid = inflater.inflate(R.layout.grid_single_event, parent, false);
 
         } else {
             grid = (View) convertView;
         }
 
-
+        event_layout = (RelativeLayout) grid.findViewById(R.id.event_layout);
 
         //-----------------------------------assign views---------------------------------------
         TextView textView_eventname = (TextView) grid.findViewById(R.id.event_name);
@@ -158,8 +160,9 @@ public class CustomGrid extends BaseAdapter {
         if(likeflag[posCoord] == 1){textView_likebutton.setBackgroundResource(R.drawable.likebutton_active);}
         else textView_likebutton.setBackgroundResource(R.drawable.layout_sharebutton);
 
-        //-----------------------------------onclick event for event name---------------------------------------
-        textView_eventname.setOnClickListener(new View.OnClickListener() {
+
+        //-----------------------------------onclick event for event layout---------------------------------------
+        event_layout.setOnClickListener(new View.OnClickListener() {
                                                   @Override
                                                   public void onClick(View v) {
                                                       Intent i = new Intent(mContext, EventDetails.class);
@@ -177,6 +180,15 @@ public class CustomGrid extends BaseAdapter {
                                                       i.putExtra("likeflag", (int)likeflag[posCoord]);
 
                                                       mContext.startActivity(i);
+                                                  }
+                                              }
+        );
+        //#-----------------------------------onclick event for event layout---------------------------------------
+        //-----------------------------------onclick event for event name---------------------------------------
+        textView_eventname.setOnClickListener(new View.OnClickListener() {
+                                                  @Override
+                                                  public void onClick(View v) {
+                                                      event_layout.performClick();
                                                   }
                                               }
         );

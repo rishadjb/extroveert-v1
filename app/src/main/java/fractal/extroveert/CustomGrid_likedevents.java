@@ -1,12 +1,17 @@
 package fractal.extroveert;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import java.text.DecimalFormat;
@@ -22,6 +27,8 @@ public class CustomGrid_likedevents extends BaseAdapter {
     private String userID;
 
     ImageView imageview_likebutton;
+
+    RelativeLayout event_layout;
 
 
 
@@ -95,6 +102,7 @@ public class CustomGrid_likedevents extends BaseAdapter {
             grid = (View) convertView;
         }
 
+        event_layout = (RelativeLayout) grid.findViewById(R.id.event_layout);
 
         //-----------------------------------assign views---------------------------------------
         TextView textView_eventname = (TextView) grid.findViewById(R.id.event_name);
@@ -104,8 +112,9 @@ public class CustomGrid_likedevents extends BaseAdapter {
         //#-----------------------------------assign views---------------------------------------
 
         //if event is liked set background to likebutton_active
-        if(likeflag[posCoord] == 1){imageview_likebutton.setBackgroundColor(0xFFFFFFFF);}
-        else imageview_likebutton.setBackgroundColor(0xFF3e3e3e);
+        if(likeflag[posCoord] == 1) imageview_likebutton.setBackgroundResource(R.mipmap.like); //imageview_likebutton.setColorFilter(Color.argb(255, 255, 0, 0), PorterDuff.Mode.SRC_ATOP); //imageview_likebutton.setBackgroundColor(0xFFFFFFFF);
+        //without else the images get screwed up when scrolling
+        else imageview_likebutton.setBackgroundResource(R.mipmap.unlike); //imageview_likebutton.setBackgroundColor(0xFF3e3e3e);
 
 
         //-----------------------------------setText---------------------------------------
@@ -117,27 +126,49 @@ public class CustomGrid_likedevents extends BaseAdapter {
 
         //-------------------------onclick event for like button - calls updatesdata to update the DB-----------------------------------
         imageview_likebutton.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+
+                                                        //if event is already liked
+                                                        if (likeflag[posCoord] == 1) {
+                                                            likeflag[posCoord] = 0;
+                                                            v.setBackgroundResource(R.mipmap.unlike);
+                                                            update_like(sku[posCoord], "remove");
+                                                        }
+                                                        //if event is not liked
+                                                        else {
+                                                            likeflag[posCoord] = 1;
+                                                            v.setBackgroundResource(R.mipmap.like);
+                                                            update_like(sku[posCoord], "add");
+                                                        }
+                                                    }
+                                                }
+        );
+        //#-------------------------onclick event for like button - calls updatesdata to update the DB-----------------------------------
+
+        //-------------------------onclick event event layout-----------------------------------
+        event_layout.setOnClickListener(new View.OnClickListener() {
                                                    @Override
                                                    public void onClick(View v) {
+                                                       Intent i = new Intent(mContext, EventDetails.class);
 
-                                                       //if event is already liked
-                                                       if (likeflag[posCoord] == 1) {
-                                                           likeflag[posCoord] = 0;
-                                                           //v.setBackgroundResource(R.drawable.layout_sharebutton);
-                                                           v.setBackgroundColor(0xFF3e3e3e);
-                                                           update_like(sku[posCoord], "remove");
-                                                       }
-                                                       //if event is not liked
-                                                       else {
-                                                           likeflag[posCoord] = 1;
-                                                           //v.setBackgroundResource(R.drawable.likebutton_active);
-                                                           v.setBackgroundColor(0xFFFFFFFF);
-                                                           update_like(sku[posCoord], "add");
-                                                       }
+                                                       i.putExtra("sku", sku[posCoord]);
+                                                       i.putExtra("eventname", eventname[posCoord]);
+                                                       i.putExtra("buyurl", buyurl[posCoord]);
+                                                       i.putExtra("date", date[posCoord]);
+                                                       i.putExtra("time", time[posCoord]);
+                                                       i.putExtra("address", address[posCoord]);
+                                                       i.putExtra("venue", venue[posCoord]);
+                                                       i.putExtra("price", (double)price[posCoord]);
+                                                       i.putExtra("lat", (double)lat[posCoord]);
+                                                       i.putExtra("lon", (double)lon[posCoord]);
+                                                       i.putExtra("likeflag", (int)likeflag[posCoord]);
+
+                                                       mContext.startActivity(i);
                                                    }
                                                }
         );
-        //#-------------------------onclick event for like button - calls updatesdata to update the DB-----------------------------------
+        //#-------------------------onclick event event layout-----------------------------------
 
         return grid;
     }
