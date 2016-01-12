@@ -21,6 +21,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -63,7 +64,8 @@ public class AdvSearch extends Activity implements OnClickListener {
     Animation LeftSwipeIn, LeftSwipeOut, RightSwipeIn, RightSwipeOut, slide_bar_left, slide_bar_right;
 
 
-    AutoCompleteTextView location_text, eventType_text;
+    AutoCompleteTextView location_text;
+    MultiAutoCompleteTextView eventType_text;
     TextView radius_text;
 
     String eventType[] = {"Concert", "Theater", "Sports", "Other"};
@@ -113,17 +115,17 @@ public class AdvSearch extends Activity implements OnClickListener {
         //lon.setText(Double.toString(myLon));
 
 
-        city_list = getCityList();
 
+        //----------------------------- SET THE DROPDOWN FOR CITY LIST --------------------------------------
+        city_list = getCityList();
         String cityList[] = city_list.split(",,");
 
         ArrayAdapter<String> citylist_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityList);
-        ArrayAdapter<String> eventType_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, eventType);
 
         location_text.setThreshold(2);  //2 characters before options are shown
         location_text.setAdapter(citylist_adapter);
-
-        //----------------------Action for when dropdown item is selected------------------------------------
+        //----------------------------- SET THE DROPDOWN FOR CITY LIST --------------------------------------
+        //----------------------Action for when CITIES dropdown item is selected-----------------------------
         location_text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -131,19 +133,23 @@ public class AdvSearch extends Activity implements OnClickListener {
         });
         //#----------------------Action for when dropdown item is selected------------------------------------
 
+
+        //----------------------------- SET THE DROPDOWN FOR EVENT TYPE --------------------------------------
+        String eventType[] = {"Concert", "Theater", "Sports", "Other"};
+        ArrayAdapter<String> eventType_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, eventType);
         eventType_text.setThreshold(0);  //2 characters before options are shown
         eventType_text.setAdapter(eventType_adapter);
+        eventType_text.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        //#----------------------------- SET THE DROPDOWN FOR EVENT TYPE --------------------------------------
 
 
         search_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                // Launching All products Activity
                 Intent i = new Intent(getApplicationContext(), EventGrid.class);
                 i.putExtra("cityName", location_text.getText().toString());
                 i.putExtra("searchRadius", radius_text.getText().toString());
-
 
                 i.putExtra("startDate", startDate_text.getText().toString());
                 i.putExtra("endDate", endDate_text.getText().toString());
@@ -306,7 +312,7 @@ public class AdvSearch extends Activity implements OnClickListener {
     private void findViewsById() {
         search_button = (TextView) findViewById(R.id.search_button);
         location_text = (AutoCompleteTextView) findViewById(R.id.location_text);
-        eventType_text = (AutoCompleteTextView) findViewById(R.id.eventType_text);
+        eventType_text = (MultiAutoCompleteTextView) findViewById(R.id.eventType_text);
         radius_text = (TextView) findViewById(R.id.radius_text);
 
 
@@ -432,23 +438,32 @@ public class AdvSearch extends Activity implements OnClickListener {
         addremove_button = (TextView) findViewById(R.id.addremove_button);
         block_button = (TextView) findViewById(R.id.block_button);
 
+        //new person
         if (current_status.equals("")) {
             addremove_button.setText("ADD");
             block_button.setText("BLOCK");
-        } else if (current_status.equals("friend")) {
+        }
+        //friends
+        else if (current_status.equals("friend")) {
             addremove_button.setText("REMOVE");
             block_button.setText("BLOCK");
-        } else if (current_status.equals("unfriend")) {
+        }
+        //unfriended
+        else if (current_status.equals("unfriend")) {
             addremove_button.setText("ADD");
             block_button.setText("BLOCK");
-        } else if (current_status.equals("blocked")) {
+        }
+        //blocked
+        else if (current_status.equals("blocked")) {
             addremove_button.setText("ADD");
 
             if (USERB.equals(USERA_db)) {
                 block_button.setText("BLOCK");
             } else block_button.setText("UNBLOCK");
 
-        } else if (current_status.equals("unblocked")) {
+        }
+        //unblocked
+        else if (current_status.equals("unblocked")) {
             addremove_button.setText("ADD");
             block_button.setText("BLOCK");
         }

@@ -210,7 +210,7 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
         );
         //#-----------------------------------onclick event for see_invitees---------------------------------------
 
-        //-----------------------------------onclick event for see_invitees---------------------------------------
+        //-----------------------------------onclick to close invitee popup---------------------------------------
         ((TextView) findViewById(R.id.friendlist_popup_close)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -218,7 +218,7 @@ public class EventDetails extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         );
-        //#-----------------------------------onclick event for see_invitees---------------------------------------
+        //#-----------------------------------onclick to close invitee popup---------------------------------------
 
 
 

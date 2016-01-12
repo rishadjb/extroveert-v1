@@ -3,9 +3,12 @@ package fractal.extroveert;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -18,15 +21,26 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by osadmin on 27/12/15.
  */
 public class Startup extends Activity {
+
+    Context context;
+
+    SharedPreferences sharedpref;
+
+
+    String JSONcheck = "empty";
+    String signup_check = "";
 
     private String fbUserID;
     private String fbProfileName;
@@ -39,21 +53,38 @@ public class Startup extends Activity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
 
+    EditText email_text, password_text;
+
     TextView emaillogin_button;
     TextView googlelogin_button;
     TextView fblogin_button;
 
+    TextView passcheck_text, forgotlogin_text;
+    String passcheck;
+
+
     private final List<String> permissions;
     public Startup() {
-        permissions = Arrays.asList("email","public_profile");
+        permissions = Arrays.asList("email", "public_profile");
+
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+        context = this;
+        sharedpref = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+        //--------------------- GO TO HOME SCREEN if userlogin is saved-------------------
+        if(!sharedpref.getString("user", "").equals("")) goToHomeScreen();
+        //--------------------- GO TO HOME SCREEN if userlogin is saved-------------------
 
 
         callbackManager = CallbackManager.Factory.create();
@@ -152,23 +183,70 @@ public class Startup extends Activity {
         });
 
 
+        // Username/Email and Password fields
+        email_text = (EditText) findViewById(R.id.email_text);
+        password_text = (EditText) findViewById(R.id.password_text);
+
         // Buttons
         emaillogin_button = (TextView) findViewById(R.id.emaillogin_button);
         googlelogin_button = (TextView) findViewById(R.id.googlelogin_button);
         fblogin_button = (TextView) findViewById(R.id.fblogin_button);
 
+        forgotlogin_text = (TextView) findViewById(R.id.forgotlogin_text);
+        passcheck_text = (TextView) findViewById(R.id.passcheck_text);
 
         emaillogin_button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit().putString("user", "rishad").apply();
-                clearStackAndStartActivity();
+                if(email_text.getText().toString().matches("") || password_text.getText().toString().matches("")) {
+                    startActivity(new Intent(getApplicationContext(), Signup.class));
+                    //Toast.makeText(getApplicationContext(), "re", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+
+                    JSONcheck="empty";
+
+                    String username = email_text.getText().toString();
+                    String password = password_text.getText().toString();
+
+                    passcheck = check_login(username, password);
+
+                    //invalid password
+                    if (check_login(username, password).equals("0")){
+
+                        //oast.makeText(Startup.this, passcheck, Toast.LENGTH_SHORT).show();
+                        passcheck_text.setText("Invalid username or password! Please try again");
+                        password_text.setText("");
+                    }
+                    //successful password - passcheck.equals("1")
+                    else{
+                        //getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit().putString("user", "rishad").apply();
+                        getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit().putString("user", username).apply();
+
+                        //String className = this.getClass().getSimpleName();
+                        //new MyClickListener(getBaseContext(), getBaseContext().getClass().getSimpleName(), EventGrid.class);
+
+                        //clearStackAndStartActivity();
+
+                        goToHomeScreen();
+
+                    }
+
+
+                }
             }
         });
 
-        fblogin_button.setOnClickListener(new View.OnClickListener() {
+        forgotlogin_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ForgotLogin.class));
+            }
+        });
 
+
+        fblogin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loginButton.performClick();
@@ -188,5 +266,49 @@ public class Startup extends Activity {
     public void clearStackAndStartActivity(){
         startActivity(new Intent(getApplicationContext(), AdvSearch.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
+
+    public String check_login(String username, String password) {
+        String passcheck = "";
+        InteractDB myData = new InteractDB("http://www.extroveert.com/extv/testconn_user.php?username="+username+"&password="+password);
+        //InteractDB myData = new InteractDB("http://www.extroveert.com/testconn_user.php?username=rishadjb&password=Ghostcat0()");
+        myData.execute();
+        while(JSONcheck=="empty"){
+            try{
+                JSONcheck = myData.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        try{
+            JSONObject jsonObject = new JSONObject(JSONcheck);
+            JSONArray jsonMainNode = jsonObject.getJSONArray("passcheck");
+            JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
+            passcheck = jsonChildNode.optString("check");
+        }
+        catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "Error" + e.toString(), Toast.LENGTH_SHORT).show();
+        }
+        return passcheck;
+    }
+
+    //-------------------------------- GO TO HOME SCREEN ---------------------------------------
+    public void goToHomeScreen(){
+        Intent i = new Intent(context, EventGrid.class);
+
+        i.putExtra("cityName", sharedpref.getString("default_location", ""));
+        i.putExtra("searchRadius", sharedpref.getString("default_searchRadius", ""));
+        i.putExtra("startDate", "");
+        i.putExtra("endDate", "");
+        i.putExtra("startTime", sharedpref.getString("default_startTime", ""));
+        i.putExtra("endTime", sharedpref.getString("default_endTime", ""));
+        i.putExtra("startPrice", sharedpref.getString("default_startPrice", ""));
+        i.putExtra("endPrice", sharedpref.getString("default_endPrice", ""));
+        i.putExtra("eventType", sharedpref.getString("default_eventType", ""));
+
+        context.startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    }
+    //#-------------------------------- GO TO HOME SCREEN ---------------------------------------
 
 }

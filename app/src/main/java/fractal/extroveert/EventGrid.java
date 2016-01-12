@@ -53,7 +53,6 @@ public class EventGrid extends FragmentActivity implements OnMapReadyCallback {
     String userID;
 
     private Context nContext;
-    Bundle savedInstanceStateX;
 
     TextView navbar_top_info;
     String navbarinfo_string;

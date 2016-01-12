@@ -213,7 +213,7 @@
             android:textSize="13sp"
             android:textColor="#174b5e"
             android:fontFamily="sans-serif-medium"/>
-        <AutoCompleteTextView
+        <MultiAutoCompleteTextView
             android:id="@+id/eventType_text"
             android:hint="Concert, Theater, Sports, Other"
             android:layout_width="0dip"

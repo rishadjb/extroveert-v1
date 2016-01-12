@@ -94,7 +94,6 @@ public class CustomGrid_likedevents extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.grid_single_likedevents, parent, false);
 

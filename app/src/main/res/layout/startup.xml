@@ -32,7 +32,7 @@
 
 
         <EditText
-            android:hint="Email or Usernmae"
+            android:hint="Email or Username"
             android:id="@+id/email_text"
             android:inputType="textEmailAddress"
             android:layout_width="fill_parent"
@@ -60,7 +60,7 @@
             android:background="#e8e8e8"/>
 
         <TextView
-            android:text="Sign in"
+            android:text="Sign in / Register"
             android:id="@+id/emaillogin_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

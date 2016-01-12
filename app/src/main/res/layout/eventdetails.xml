@@ -275,58 +275,71 @@
         <!-- LinearLayout: holds popup to view invitees -->
         <LinearLayout
             android:id="@+id/friendlist_popup"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:minWidth="50dip"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:layout_gravity="center"
-            android:background="#ffffff"
-            android:textColor="#828282"
-            android:textStyle="bold"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:background="#80eeeeee"
             android:visibility="gone">
 
-            <!-- LinearLayout: holds contents excluding close button -->
             <LinearLayout
-                android:id="@+id/invitelist_layout"
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:minWidth="75dip"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:background="#ffffff"
+                android:textColor="#828282"
+                android:textStyle="bold">
 
-                <TextView
+                <!-- LinearLayout: holds contents excluding close button -->
+                <LinearLayout
+                    android:id="@+id/invitelist_layout"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Invitee List"
+                        android:textSize="12sp"/>
+
+                    <!-- New linear layouts with invitee names are added here dynamically -->
+
+
+                </LinearLayout>
+                <!-- LinearLayout: holds contents excluding close button -->
+
+                <!-- LinearLayout: holds close button -->
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Invitee List"
-                    android:textSize="12sp"/>
-
-                <!-- New linear layouts with invitee names are added here dynamically -->
-
-
-            </LinearLayout>
-            <!-- LinearLayout: holds contents excluding close button -->
-
-            <!-- LinearLayout: holds close button -->
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="3dip">
-                <TextView
-                    android:id="@+id/friendlist_popup_close"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="3dip"
-                    android:paddingRight="3dip"
                     android:gravity="center"
-                    android:text="CLOSE"
-                    android:textSize="8sp"
-                    android:textColor="#ffffff"
-                    android:background="#00589a"/>
+                    android:layout_marginTop="3dip">
+                    <TextView
+                        android:id="@+id/friendlist_popup_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="3dip"
+                        android:paddingRight="3dip"
+                        android:gravity="center"
+                        android:text="CLOSE"
+                        android:textSize="8sp"
+                        android:textColor="#ffffff"
+                        android:background="#00589a"/>
+                </LinearLayout>
+
             </LinearLayout>
+
+
 
         </LinearLayout>
+
+
+
         <!-- LinearLayout: holds popup to view invitees -->
 
     </FrameLayout>
